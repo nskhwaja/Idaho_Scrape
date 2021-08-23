@@ -3,21 +3,21 @@ import bs4
 import requests
 
 def import_pharmacists(pharma_lname):
-    if pharma_lname == 'L':
+    if pharma_lname == 'L': #specifing the variable to filter to
         page = requests.get('https://idbop.mylicense.com/verification/SearchResults.aspx')
-    elif pharma_lname == 'l':
+    elif pharma_lname == 'l': #if the last name came out lowercae
         page = requests.get('https://idbop.mylicense.com/verification/SearchResults.aspx')
     else:
         logger.error("Invalid Pharma_LName: " + pharma_lname)
-        return None
+        return None #if a null is returned
 
-    # Parse the HTML Page
+    # html parse
     soup = bs4.BeautifulSoup(page.content, 'html.parser')
 
     # Grab only table elements
     all_soup = soup.find_all('table')
 
-    # Get what you want from table elements!
+    # Get table elements
     for element in all_soup:        
         listing = str(element)
 
