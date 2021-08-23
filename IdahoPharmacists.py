@@ -23,7 +23,7 @@ def import_pharmacists(pharma_lname):
 
         if 'https://idbop.mylicense.com/verification/SearchResults.aspx' in listing:   
 
-            # Stuff the results in a pandas data frame (if your not using these you should)
+            # Stuff the results in a pandas df
             data = pd.read_html(listing)
 
     return data
